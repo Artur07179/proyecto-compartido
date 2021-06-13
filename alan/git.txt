@@ -1,0 +1,14 @@
+git init
+
+#Byte-compiled / Optimized  / DLL  (Diynamic Link Library)
+
+__pycache__/
+*.py[ cod]
+*$py.class
+
+# Environments
+env/
+.env
+
+git add. 
+git commit -m "Commit 001: Trabajo finalizado v1"
