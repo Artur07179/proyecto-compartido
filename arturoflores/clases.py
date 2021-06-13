@@ -1,5 +1,7 @@
 import datetime
 from datetime import date
+from dateutil import relativedelta
+
 
 class fechaCal:
 
@@ -12,22 +14,23 @@ class fechaCal:
 		self.añoFin = añoFin
 
 	def calcularFechaT(self):
-		dayI = self.dia
-		monthI = self.mes
-		yearI = self.año
-		dayEnd = self.diaFin
-		monthEnd = self.mesFin
-		yearEnd = self.añoFin
+		yearsI = self.año
+		monthsI = self.mes
+		daysI = self.dia
 
-		dayTot = int(dayEnd) - int(dayI)
-		monthTot = int(monthEnd) - int(monthI)
-		yearTot = int(yearEnd) - int(yearI)
+		yearsE = self.añoFin
+		monthsE = self.mesFin
+		daysE = self.diaFin
 
-		parseoDay = str(dayTot)
-		parseoMonth = str(monthTot)
-		parseoYear = str(yearTot)
+		date1 = datetime.date(int(yearsI), int(monthsI), int(daysI))
+		date2 = datetime.date(int(yearsE), int(monthsE), int(daysE))
 
-		complete = ("Hay " + parseoDay + " dias, " + parseoMonth + " meses y " + parseoYear + " años de diferencia")
+		diff = relativedelta.relativedelta(date2, date1)
+		years = diff.years 
+		months = diff.months 
+		days = diff.days
+
+		complete = ('La diferencia es de {} días, {} meses y {} años'.format(days, months,years))
 
 		return complete
 
@@ -73,3 +76,4 @@ class fechaCal:
 
 		
 		return diferenciaStr
+
